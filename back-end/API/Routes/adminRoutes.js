@@ -1,14 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const { AdminSignUp, AdminLogIn, AdminLogOut } = require('../Controllers/adminController');
-const isAdminAuthenticated = require('../Middlewares/isAdminAuthenticated');
+const isAdminAuthenticated = require('./../Middlewares/isAdminAuthenticated');
 
-router.post('/admin/signup', AdminSignUp);
+router.post('/signup', AdminSignUp);
 
-router.route('/admin/login')
-    .get(AdminLogIn);
+router.route('/login')
+    .post(AdminLogIn);
 
-router.route('/admin/logout')
+router.route('/logout')
+    .all(isAdminAuthenticated)
     .get(AdminLogOut);
 
 module.exports = {

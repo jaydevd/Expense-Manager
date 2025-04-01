@@ -15,4 +15,4 @@ const isAdminAuthenticated = async (req, res) => {
         })
     }
 }
-module.exports = { isAdminAuthenticated };
+module.exports = isAdminAuthenticated;
